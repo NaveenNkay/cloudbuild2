@@ -3,6 +3,7 @@ steps:
   - name: gcr.io/cloud-builders/docker
     id: Build
     args:
+      - cd python-app
       - build
       - -t
       - gcr.io/$PROJECT_ID/my-python-app:$SHORT_SHA
