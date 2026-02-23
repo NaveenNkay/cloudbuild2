@@ -15,3 +15,6 @@ steps:
 
 images:
   - gcr.io/$PROJECT_ID/my-python-app:$SHORT_SHA
+
+options:
+  logging: CLOUD_LOGGING_ONLY
