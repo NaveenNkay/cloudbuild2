@@ -1,6 +1,7 @@
 steps:
   # Build the Docker image
   - name: gcr.io/cloud-builders/docker
+    id: Build
     args:
       - build
       - -t
@@ -9,9 +10,12 @@ steps:
 
   # Push the image to GCR
   - name: gcr.io/cloud-builders/docker
+    id: Push
     args:
       - push
       - gcr.io/$PROJECT_ID/my-python-app:$SHORT_SHA
+    waitFor:
+      - "Build"
 
 images:
   - gcr.io/$PROJECT_ID/my-python-app:$SHORT_SHA
